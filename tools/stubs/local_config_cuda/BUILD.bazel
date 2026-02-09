@@ -1,0 +1,21 @@
+load("@bazel_skylib//rules:common_settings.bzl", "bool_setting")
+
+# Stub repo for local_config_cuda (CPU-only builds).
+
+bool_setting(
+    name = "using_config_cuda",
+    build_setting_default = False,
+    visibility = ["//visibility:public"],
+)
+
+config_setting(
+    name = "is_cuda_enabled",
+    define_values = {"using_cuda": "true"},
+    visibility = ["//visibility:public"],
+)
+
+config_setting(
+    name = "is_cuda_compiler_nvcc",
+    define_values = {"cuda_compiler": "nvcc"},
+    visibility = ["//visibility:public"],
+)
